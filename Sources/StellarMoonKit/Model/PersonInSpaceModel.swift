@@ -61,7 +61,7 @@ public enum Spacecraft: String, Hashable, Codable {
 	case soyuzMS21 = "Soyuz MS-21"
 }
 
-extension PeopleInSpaceResponse {
+extension Person {
 	public static var peopleSample = Person(
 		id: 1, name: "Oleg Artemyev",
 								country: "Russia", flagCode: "ru",
