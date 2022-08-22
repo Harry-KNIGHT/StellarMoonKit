@@ -60,3 +60,17 @@ public enum Spacecraft: String, Hashable, Codable {
 	case shenzhou14 = "Shenzhou 14"
 	case soyuzMS21 = "Soyuz MS-21"
 }
+
+extension PeopleInSpaceResponse {
+	public static var peopleSample = Person(
+		id: 1, name: "Oleg Artemyev",
+								country: "Russia", flagCode: "ru",
+								agency: "Roscosmos",
+								position: "Commander",
+								spacecraft: .soyuzMS21,
+								launched: 1647615318,
+								iss: true,
+								daysInSpace: 361,
+								url: "https://en.wikipedia.org/wiki/Oleg_Artemyev",
+								image: "https://upload.wikimedia.org/wikipedia/commons/5/5a/Oleg_Artemyev_in_2021.jpg")
+}
