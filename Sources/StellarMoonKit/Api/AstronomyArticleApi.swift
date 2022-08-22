@@ -13,9 +13,9 @@ enum ApiError: Error {
 }
 
 @available(macOS 12.0, *)
-struct AstronomyApi {
+public struct AstronomyApi {
 
-	func nasaApi() async throws -> NasaAstronomyResponse {
+	public static func nasaApi() async throws -> NasaAstronomyResponse {
 		let url = "https://api.nasa.gov/planetary/apod?api_key=wHAZImKgLhzz4TzarBAWeznXG1TOSiUh3DqnrobZ"
 		guard let url = URL(string: url) else {
 			throw ApiError.urlNotFound

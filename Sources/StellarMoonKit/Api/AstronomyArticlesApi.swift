@@ -8,9 +8,9 @@
 import Foundation
 
 @available(macOS 12.0, *)
-class AstronomiesArticleApi{
+public struct AstronomiesArticleApi {
 
-	func fetchAstronomiesObject(from hundredDayBefore: Int64 = Date().millisecondsSince1970 , to today: Date) async throws -> [NasaAstronomyResponse] {
+	 public static func fetchAstronomiesObject(from hundredDayBefore: Int64 = Date().millisecondsSince1970 , to today: Date) async throws -> [NasaAstronomyResponse] {
 		let formatter = DateFormatter()
 		formatter.dateFormat = "yyyy-MM-dd"
 
@@ -48,11 +48,11 @@ class AstronomiesArticleApi{
 
 
 extension Date {
-	var millisecondsSince1970: Int64 {
+	public var millisecondsSince1970: Int64 {
 		Int64((self.timeIntervalSince1970 * 1000.0).rounded())
 	}
 
-	init(milliseconds: Int64) {
+	public init(milliseconds: Int64) {
 		self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
 	}
 }

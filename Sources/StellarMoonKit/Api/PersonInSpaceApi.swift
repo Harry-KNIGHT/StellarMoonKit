@@ -8,8 +8,8 @@
 import Foundation
 
 @available(macOS 12.0, *)
-struct PersonInSpaceApi {
-	func fetchPersonInSpace() async throws -> PeopleInSpaceResponse {
+public struct PersonInSpaceApi {
+	public static func fetchPersonInSpace() async throws -> PeopleInSpaceResponse {
 		let url = "https://corquaid.github.io/international-space-station-APIs/JSON/people-in-space.json"
 
 		guard let url = URL(string: url) else {
