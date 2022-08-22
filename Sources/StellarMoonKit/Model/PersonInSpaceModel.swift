@@ -8,14 +8,23 @@
 import Foundation
 
 // MARK: - PeopleInSpaceResponse
-struct PeopleInSpaceResponse: Hashable, Codable {
-	let number, issExpedition: Int
-	let expeditionPatch: String
-	let expeditionURL: String
-	let expeditionImage: String
-	let people: [Person]
+public struct PeopleInSpaceResponse: Hashable, Codable {
+	internal init(number: Int, issExpedition: Int, expeditionPatch: String, expeditionURL: String, expeditionImage: String, people: [Person]) {
+		self.number = number
+		self.issExpedition = issExpedition
+		self.expeditionPatch = expeditionPatch
+		self.expeditionURL = expeditionURL
+		self.expeditionImage = expeditionImage
+		self.people = people
+	}
 
-	enum CodingKeys: String, CodingKey {
+	public let number, issExpedition: Int
+	public let expeditionPatch: String
+	public let expeditionURL: String
+	public let expeditionImage: String
+	public let people: [Person]
+
+	public enum CodingKeys: String, CodingKey {
 		case number
 		case issExpedition = "iss_expedition"
 		case expeditionPatch = "expedition_patch"
@@ -26,7 +35,7 @@ struct PeopleInSpaceResponse: Hashable, Codable {
 }
 
 // MARK: - Person
-struct Person: Hashable, Codable {
+public struct Person: Hashable, Codable {
 	let id: Int
 	let name, country, flagCode, agency: String
 	let position: String
@@ -37,7 +46,7 @@ struct Person: Hashable, Codable {
 	let url: String
 	let image: String
 
-	enum CodingKeys: String, CodingKey {
+	public enum CodingKeys: String, CodingKey {
 		case id, name, country
 		case flagCode = "flag_code"
 		case agency, position, spacecraft, launched, iss
@@ -46,7 +55,7 @@ struct Person: Hashable, Codable {
 	}
 }
 
-enum Spacecraft: String, Hashable, Codable {
+public enum Spacecraft: String, Hashable, Codable {
 	case crew4Dragon = "Crew-4 Dragon"
 	case shenzhou14 = "Shenzhou 14"
 	case soyuzMS21 = "Soyuz MS-21"
