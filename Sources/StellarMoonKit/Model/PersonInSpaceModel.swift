@@ -36,15 +36,15 @@ public struct PeopleInSpaceResponse: Hashable, Codable {
 
 // MARK: - Person
 public struct Person: Hashable, Codable {
-	let id: Int
-	let name, country, flagCode, agency: String
-	let position: String
-	let spacecraft: Spacecraft
-	let launched: Int
-	let iss: Bool
-	let daysInSpace: Int
-	let url: String
-	let image: String
+	public let id: Int
+	public let name, country, flagCode, agency: String
+	public let position: String
+	public let spacecraft: Spacecraft
+	public let launched: Int
+	public let iss: Bool
+	public let daysInSpace: Int
+	public let url: String
+	public let image: String
 
 	public enum CodingKeys: String, CodingKey {
 		case id, name, country
