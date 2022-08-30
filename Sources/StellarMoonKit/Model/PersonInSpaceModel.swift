@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - PeopleInSpaceResponse
 public struct PeopleInSpaceResponse: Hashable, Codable {
-	internal init(number: Int, issExpedition: Int, expeditionPatch: String, expeditionURL: String, expeditionImage: String, people: [Person]) {
+	public init(number: Int, issExpedition: Int, expeditionPatch: String, expeditionURL: String, expeditionImage: String, people: [Person]) {
 		self.number = number
 		self.issExpedition = issExpedition
 		self.expeditionPatch = expeditionPatch

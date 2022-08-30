@@ -8,7 +8,7 @@
 import Foundation
 
 public struct NasaAstronomyResponse: Hashable, Codable {
-	internal init(copyright: String?, date: String, explanation: String, hdurl: String?, mediaType: String, serviceVersion: String, title: String, url: String) {
+	public init(copyright: String?, date: String, explanation: String, hdurl: String?, mediaType: String, serviceVersion: String, title: String, url: String) {
 		self.copyright = copyright
 		self.date = date
 		self.explanation = explanation
