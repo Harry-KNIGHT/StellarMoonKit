@@ -7,8 +7,9 @@
 
 import Foundation
 
-public struct AstronomyArticleModel: Codable {
-	public init(copyright: String?, date: String, explanation: String, hdurl: String?, mediaType: MediaType, serviceVersion: ServiceVersion, title: String, url: String) {
+public struct AstronomyArticleModel: Identifiable, Codable {
+	public init(id: UUID = UUID(), copyright: String?, date: String, explanation: String, hdurl: String?, mediaType: MediaType, serviceVersion: ServiceVersion, title: String, url: String) {
+		self.id = id
 		self.copyright = copyright
 		self.date = date
 		self.explanation = explanation
@@ -18,7 +19,7 @@ public struct AstronomyArticleModel: Codable {
 		self.title = title
 		self.url = url
 	}
-
+	public var id: UUID
 	public let copyright: String?
 	public let date, explanation: String
 	public let hdurl: String?
@@ -28,6 +29,7 @@ public struct AstronomyArticleModel: Codable {
 	public let url: String
 
 	public enum CodingKeys: String, CodingKey {
+		case id
 		case copyright, date, explanation, hdurl
 		case mediaType = "media_type"
 		case serviceVersion = "service_version"
