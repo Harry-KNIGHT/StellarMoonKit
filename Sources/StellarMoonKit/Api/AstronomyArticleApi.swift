@@ -15,7 +15,7 @@ public enum ApiError: Error {
 @available(macOS 12.0, *)
 public struct AstronomyApi {
 
-	public static func nasaApi() async throws -> NasaAstronomyResponse {
+	public static func nasaApi() async throws -> ArticleModel {
 		let url = "https://api.nasa.gov/planetary/apod?api_key=wHAZImKgLhzz4TzarBAWeznXG1TOSiUh3DqnrobZ"
 		guard let url = URL(string: url) else {
 			throw ApiError.urlNotFound
@@ -28,7 +28,7 @@ public struct AstronomyApi {
 		}
 
 		do {
-			return  try JSONDecoder().decode(NasaAstronomyResponse.self, from: data)
+			return  try JSONDecoder().decode(ArticleModel.self, from: data)
 		} catch {
 			print("Error: \(error.localizedDescription)")
 			throw ApiError.someThingWentWrong

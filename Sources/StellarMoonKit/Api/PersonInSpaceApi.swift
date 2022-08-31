@@ -9,7 +9,7 @@ import Foundation
 
 @available(macOS 12.0, *)
 public struct PersonInSpaceApi {
-	public static func fetchPersonInSpace() async throws -> PeopleInSpaceResponse {
+	public static func fetchPersonInSpace() async throws -> PersonInSpaceModel {
 		let url = "https://corquaid.github.io/international-space-station-APIs/JSON/people-in-space.json"
 
 		guard let url = URL(string: url) else {
@@ -23,7 +23,7 @@ public struct PersonInSpaceApi {
 		}
 		
 		do {
-			return try JSONDecoder().decode(PeopleInSpaceResponse.self, from: data)
+			return try JSONDecoder().decode(PersonInSpaceModel.self, from: data)
 		} catch {
 			throw ApiError.someThingWentWrong
 		}
