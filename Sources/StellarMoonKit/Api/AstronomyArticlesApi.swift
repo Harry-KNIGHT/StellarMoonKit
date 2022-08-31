@@ -10,7 +10,7 @@ import Foundation
 @available(macOS 12.0, *)
 public struct AstronomiesArticleApi {
 
-	 public static func fetchAstronomiesObject(from hundredDayBefore: Int64 = Date().millisecondsSince1970 , to today: Date) async throws -> [ArticleModel] {
+	 public static func fetchAstronomiesObject(from hundredDayBefore: Int64 = Date().millisecondsSince1970 , to today: Date) async throws -> [AstronomyArticleModel] {
 		let formatter = DateFormatter()
 		formatter.dateFormat = "yyyy-MM-dd"
 
@@ -39,7 +39,7 @@ public struct AstronomiesArticleApi {
 		}
 
 		do {
-			return try JSONDecoder().decode([ArticleModel].self, from: data)
+			return try JSONDecoder().decode([AstronomyArticleModel].self, from: data)
 		} catch {
 			throw ApiError.someThingWentWrong
 		}
