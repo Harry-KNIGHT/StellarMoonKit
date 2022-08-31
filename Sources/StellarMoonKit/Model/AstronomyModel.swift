@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AstronomyArticleModel: Hashable, Identifiable, Codable {
+public struct AstronomyArticleModel: Hashable, Codable {
 	public init(copyright: String?, date: String, explanation: String, hdurl: String?, mediaType: MediaType, serviceVersion: ServiceVersion, title: String, url: String) {
 		self.copyright = copyright
 		self.date = date
