@@ -7,11 +7,6 @@
 
 import Foundation
 
-
-public enum ApiError: Error {
-	case urlNotFound, dataError, badHttpResponse, someThingWentWrong, noDataForImage
-}
-
 @available(macOS 12.0, *)
 public struct AstronomyApi {
 

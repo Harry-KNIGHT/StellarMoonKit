@@ -47,12 +47,13 @@ typealias ArticleModel = [AstronomyArticleModel]
 
 
 extension AstronomyArticleModel {
-	public static var astronomySample = AstronomyArticleModel(copyright: "Eduardo\nSchaberger Poupeau",
-															  date: "2022-07-16",
-															  explanation: "South is up in this dramatic telescopic view of the lunar terminator and the Moon's rugged southern highlands.",
-															  hdurl: "https://apod.nasa.gov/apod/image/2207/Dawn-in-Clavius-Tycho-07-07-22.jpg",
-															  mediaType: .image,
-															  serviceVersion: .v1,
-															  title: "Tycho and Clavius at Dawn",
-															  url: "https://apod.nasa.gov/apod/image/2207/Dawn-in-Clavius-Tycho-07-07-22_1024.jpg")
+	public static var astronomySample = AstronomyArticleModel(
+		copyright: "Eduardo\nSchaberger Poupeau",
+		date: "2022-07-16",
+		explanation: "South is up in this dramatic telescopic view of the lunar terminator and the Moon's rugged southern highlands.",
+		hdurl: "https://apod.nasa.gov/apod/image/2207/Dawn-in-Clavius-Tycho-07-07-22.jpg",
+		mediaType: .image,
+		serviceVersion: .v1,
+		title: "Tycho and Clavius at Dawn",
+		url: "https://apod.nasa.gov/apod/image/2207/Dawn-in-Clavius-Tycho-07-07-22_1024.jpg")
 }
