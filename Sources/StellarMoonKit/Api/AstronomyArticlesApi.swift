@@ -26,8 +26,8 @@ public struct AstronomiesArticleApi {
 		let dateString = formatter.string(from: today)
 		print(dateString)
 
-		let apiKey: String = "wHAZImKgLhzz4TzarBAWeznXG1TOSiUh3DqnrobZ"
-		let url: String = "https://api.nasa.gov/planetary/apod?api_key=\(apiKey)&start_date=\(hundredDayAgo)&end_date=\(dateString)"
+	
+		let url = "https://apod.ellanan.com/api?start_date=\(hundredDayAgo)&end_date=\(dateString)"
 
 		guard let url = URL(string: url) else {
 			throw ApiError.urlNotFound
