@@ -15,7 +15,7 @@ public struct AstronomiesArticleApi {
 		formatter.dateFormat = "yyyy-MM-dd"
 
 		//100 days ago converter
-		let epochHundredDaysAgo: Int64 = 5184000000 // 60 days in milliseconds
+		let epochHundredDaysAgo: Int64 = (5184000000 * 2)// 110 days in milliseconds
 		let todayMinusHundredDay = (hundredDayBefore - epochHundredDaysAgo)
 		let hundredDayAgoDateType = Date(milliseconds: todayMinusHundredDay)
 		let hundredDayAgo = formatter.string(from: hundredDayAgoDateType)
