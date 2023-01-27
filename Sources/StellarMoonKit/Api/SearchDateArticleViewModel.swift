@@ -8,7 +8,7 @@
 import Foundation
 
 
-class SearchDateArticleViewModel {
+class SearchSingleArticleApi {
 	static func searchOneArticle(date: Date) async throws -> AstronomyArticleModel  {
 
 		let currentCalendar = Calendar.current
