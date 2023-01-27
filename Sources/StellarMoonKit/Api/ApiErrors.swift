@@ -8,5 +8,5 @@
 import Foundation
 
 public enum ApiError: Error {
-	case urlNotFound, dataError, badHttpResponse, someThingWentWrong, noDataForImage, cantFetchImage
+	case urlNotFound, dataError, badHttpResponse, someThingWentWrong, noDataForImage, cantFetchImage, dateError
 }
