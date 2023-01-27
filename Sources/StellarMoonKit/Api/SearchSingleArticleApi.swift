@@ -9,7 +9,7 @@ import Foundation
 
 
 public struct SearchSingleArticleApi {
-	static func searchOneArticle(date: Date) async throws -> AstronomyArticleModel  {
+	public static func searchOneArticle(date: Date) async throws -> AstronomyArticleModel  {
 
 		let currentCalendar = Calendar.current
 		let components = currentCalendar.dateComponents([.year, .day, .month], from: date)
