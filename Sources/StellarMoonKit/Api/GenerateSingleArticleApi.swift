@@ -8,8 +8,8 @@
 import Foundation
 
 
-public struct generateRandomArticleApi {
-	public static func searchOneArticle() async throws -> AstronomyArticleModel  {
+public struct GenerateRandomArticleApi {
+	public static func generateOneArticle() async throws -> AstronomyArticleModel  {
 		let randomYear = Int.random(in: 2000...2022)
 		let randomMonth = Int.random(in: 01...12)
 		let randomDay = Int.random(in: 01...30)
