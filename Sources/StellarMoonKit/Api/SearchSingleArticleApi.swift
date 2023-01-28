@@ -10,22 +10,21 @@ import Foundation
 
 public struct SearchSingleArticleApi {
 	public static func searchOneArticle(date: Date) async throws -> AstronomyArticleModel  {
+		let year = date.formatted(.dateTime.year(.defaultDigits))
+		let month = date.formatted(.dateTime.month(.twoDigits))
+		let day = date.formatted(.dateTime.day(.twoDigits))
 
-		let currentCalendar = Calendar.current
-		let components = currentCalendar.dateComponents([.year, .day, .month], from: date)
+		 let stringDate = "\(year)-\(month)-\(day)"
 
-		guard let year = components.year,
-			  let day = components.day,
-			  let month = components.month
-		else { throw ApiError.dateError }
+		 let url = "https://apod.ellanan.com/api?date=\(stringDate)"
 
-		let articleURL = URL(string:"https://apod.ellanan.com/api?date=\(year)-\(month)-\(day)")
-
-		guard let articleURL else { throw ApiError.urlNotFound }
+		guard let articleURL = URL(string: url) else { throw ApiError.urlNotFound }
 
 		let (data, response) = try await URLSession.shared.data(from: articleURL)
 
-		guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw ApiError.badHttpResponse }
+		guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+			throw ApiError.badHttpResponse
+		}
 
 		do {
 			return try JSONDecoder().decode(AstronomyArticleModel.self, from: data)
