@@ -8,13 +8,13 @@
 import Foundation
 
 
-public struct SearchSingleArticleApi {
-	public static func searchOneArticle(date: Date) async throws -> AstronomyArticleModel  {
-		let year = date.formatted(.dateTime.year(.defaultDigits))
-		let month = date.formatted(.dateTime.month(.twoDigits))
-		let day = date.formatted(.dateTime.day(.twoDigits))
+public struct generateRandomArticleApi {
+	public static func searchOneArticle() async throws -> AstronomyArticleModel  {
+		let randomYear = Int.random(in: 2000...2022)
+		let randomMonth = Int.random(in: 01...12)
+		let randomDay = Int.random(in: 01...30)
 
-		 let stringDate = "\(year)-\(month)-\(day)"
+		let stringDate = String(format: "%04d-%02d-%02d", randomYear, randomMonth, randomDay)
 
 		 let url = "https://apod.ellanan.com/api?date=\(stringDate)"
 
