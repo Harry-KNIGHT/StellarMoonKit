@@ -9,14 +9,20 @@ import Foundation
 
 
 public struct GenerateRandomArticleApi {
+
 	public static func generateOneArticle() async throws -> AstronomyArticleModel  {
-		let randomYear = Int.random(in: 2000...2022)
-		let randomMonth = Int.random(in: 01...12)
-		let randomDay = Int.random(in: 01...30)
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd" // Conform to url date format
 
-		let stringDate = String(format: "%04d-%02d-%02d", randomYear, randomMonth, randomDay)
+		let firstDate: Double = 1262304000 // 01/01/2010
+		let today: Double = Date().timeIntervalSince1970
 
-		 let url = "https://apod.ellanan.com/api?date=\(stringDate)"
+		let randomEpochDate = Double.random(in: firstDate..<today)
+
+		let epochToFormattedDate = Date(timeIntervalSince1970: randomEpochDate)
+		let stringDateFormat = dateFormatter.string(from: epochToFormattedDate)
+
+		 let url = "https://apod.ellanan.com/api?date=\(stringDateFormat)"
 
 		guard let articleURL = URL(string: url) else { throw ApiError.urlNotFound }
 
