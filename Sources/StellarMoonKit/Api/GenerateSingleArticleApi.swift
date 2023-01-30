@@ -9,24 +9,9 @@ import Foundation
 
 
 public struct GenerateRandomArticleApi {
-	private func generateRandomDate() -> String {
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd" // Conform to url date format
-
-		let firstDate: Double = 1262304000 // 01/01/2010
-		let today: Double = Date().timeIntervalSince1970
-
-		let randomEpochDate = Double.random(in: firstDate..<today)
-
-		let epochToFormattedDate = Date(timeIntervalSince1970: randomEpochDate)
-		let stringDateFormat = dateFormatter.string(from: epochToFormattedDate)
-
-		return stringDateFormat
-	}
 
 	public static func generateOneArticle() async throws -> AstronomyArticleModel  {
-
-		let url = "https://apod.ellanan.com/api?date=\(String(describing: generateRandomDate.self))"
+		let url = "https://apod.ellanan.com/api?date=\(Date.now.randomDate))"
 
 		guard let articleURL = URL(string: url) else { throw ApiError.urlNotFound }
 
