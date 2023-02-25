@@ -9,8 +9,7 @@ import Foundation
 
 
 public struct GenerateRandomArticleApi {
-
-	public static func generateOneArticle() async throws -> AstronomyArticleModel  {
+	public static func generateOneArticle() async throws -> Article {
 		let url = "https://apod.ellanan.com/api?date=\(Date.now.randomDate)"
 
 		guard let articleURL = URL(string: url) else { throw ApiError.urlNotFound }
@@ -22,7 +21,7 @@ public struct GenerateRandomArticleApi {
 		}
 
 		do {
-			return try JSONDecoder().decode(AstronomyArticleModel.self, from: data)
+			return try JSONDecoder().decode(Article.self, from: data)
 		} catch {
 			throw error
 		}

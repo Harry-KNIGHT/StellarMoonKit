@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AstronomyArticleModel: Hashable, Codable {
+public struct Article: Hashable, Codable {
 	public init(copyright: String?, date: String, explanation: String, hdurl: String?, mediaType: MediaType, serviceVersion: ServiceVersion, title: String, url: String) {
 		self.copyright = copyright
 		self.date = date
@@ -43,11 +43,10 @@ public enum ServiceVersion: String, Codable {
 	case v1 = "v1"
 }
 
-typealias ArticleModel = [AstronomyArticleModel]
+typealias ArticleModel = [Article]
 
-
-extension AstronomyArticleModel {
-	public static var astronomySample = AstronomyArticleModel(
+extension Article {
+	public static var articleSample = Article(
 		copyright: "Eduardo\nSchaberger Poupeau",
 		date: "2022-07-16",
 		explanation: "South is up in this dramatic telescopic view of the lunar terminator and the Moon's rugged southern highlands.",

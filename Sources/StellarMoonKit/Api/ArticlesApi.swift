@@ -8,9 +8,8 @@
 import Foundation
 
 @available(macOS 12.0, *)
-public struct AstronomiesArticleApi {
-
-	public static func fetchAstronomiesObject(from hundredDayBefore: Int64 = Date().millisecondsSince1970 , to today: Date) async throws -> [AstronomyArticleModel] {
+public struct FetchArticlesApi {
+	public static func fetchAstronomiesObject(from hundredDayBefore: Int64 = Date().millisecondsSince1970 , to today: Date) async throws -> [Article] {
 		let formatter = DateFormatter()
 		formatter.dateFormat = "yyyy-MM-dd"
 
@@ -24,8 +23,6 @@ public struct AstronomiesArticleApi {
 		let  today = Date()
 
 		let dateString = formatter.string(from: today)
-		print(dateString)
-
 	
 		let url = "https://apod.ellanan.com/api?start_date=\(hundredDayAgo)&end_date=\(dateString)"
 
@@ -39,7 +36,7 @@ public struct AstronomiesArticleApi {
 		}
 
 		do {
-			return try JSONDecoder().decode([AstronomyArticleModel].self, from: data)
+			return try JSONDecoder().decode([Article].self, from: data)
 		} catch {
 			throw ApiError.someThingWentWrong
 		}
