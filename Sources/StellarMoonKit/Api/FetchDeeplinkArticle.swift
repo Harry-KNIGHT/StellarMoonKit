@@ -8,6 +8,7 @@
 import Foundation
 
 public struct FetchDeeplinkArticle {
+	@available(macOS 12.0, *)
 	public static func fetchDeeplinkArticle(date: String) async throws -> Article {
 		let url = "https://apod.ellanan.com/api?date=\(date)"
 
