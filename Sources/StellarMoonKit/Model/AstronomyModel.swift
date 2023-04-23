@@ -7,7 +7,12 @@
 
 import Foundation
 
-public struct Article: Hashable, Codable {
+// MARK: - Article model
+
+public struct Article: Identifiable, Codable {
+
+	// MARK: Initializer
+
 	public init(
 		copyright: String?,
 		date: String,
@@ -26,6 +31,10 @@ public struct Article: Hashable, Codable {
 		self.title = title
 		self.mediaUrl = mediaUrl
 	}
+
+	// MARK: Properties
+
+	public var id: String { explanation }
 	public let copyright: String?
 	public let date, explanation: String
 
@@ -43,16 +52,22 @@ public struct Article: Hashable, Codable {
 	}
 }
 
+// MARK: MediaType enum
+
 public enum MediaType: String, Codable {
 	case image = "image"
 	case video = "video"
 }
+
+// MARK: ServiceVersion enum
 
 public enum ServiceVersion: String, Codable {
 	case v1 = "v1"
 }
 
 typealias ArticleModel = [Article]
+
+// MARK: Article extension
 
 extension Article {
 	public static var articleSample = Article(
