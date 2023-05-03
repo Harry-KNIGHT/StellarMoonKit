@@ -70,12 +70,23 @@ typealias ArticleModel = [Article]
 // MARK: Article extension
 
 extension Article {
-	public static var articleSample = Article(
+	public static var imageArticleSample = Article(
 		copyright: "Eduardo\nSchaberger Poupeau",
 		date: "2022-07-16",
 		explanation: "South is up in this dramatic telescopic view of the lunar terminator and the Moon's rugged southern highlands.",
 		mediaType: .image,
 		serviceVersion: .v1,
 		title: "Tycho and Clavius at Dawn",
-		mediaUrl: "https://apod.nasa.gov/apod/image/2207/Dawn-in-Clavius-Tycho-07-07-22_1024.jpg")
+		mediaUrl: "https://apod.nasa.gov/apod/image/2207/Dawn-in-Clavius-Tycho-07-07-22_1024.jpg"
+	)
+
+	public static var videoArticleSample = Article(
+		copyright: "NASA/JHU Applied Physics Lab/Carnegie Inst. Washington",
+		date: "2022-05-09",
+		explanation: "What it would look like to leave planet Earth? Such an event was recorded visually in great detail by the MESSENGER spacecraft as it swung back past the Earth in 2005 on its way in toward the planet Mercury. Earth can be seen rotating in this time-lapse video, as it recedes into the distance. The sunlit half of Earth is so bright that background stars are not visible. The robotic MESSENGER spacecraft is now in orbit around Mercury and has recently concluded the first complete map of the surface. On occasion, MESSENGER has continued to peer back at its home world. MESSENGER is one of the few things created on the Earth that will never return. At the end of its mission MESSENGER crashed into Mercury's surface.",
+		mediaType: .video,
+		serviceVersion: .v1,
+		title: "Leaving Earth",
+		mediaUrl: "https://www.youtube.com/embed/rFDjAfwmWKM?rel=0"
+	)
 }
