@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Article model
 
-public struct Article: Identifiable, Codable {
+public struct Article: Identifiable, Codable, Equatable {
 
 	// MARK: Initializer
 
