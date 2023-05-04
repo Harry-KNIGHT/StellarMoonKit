@@ -8,14 +8,6 @@
 import Foundation
 
 extension Date {
-	public var millisecondsSince1970: Int64 {
-		Int64((self.timeIntervalSince1970 * 1000.0).rounded())
-	}
-
-	public init(milliseconds: Int64) {
-		self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
-	}
-
 	public var randomDate: String {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "yyyy-MM-dd" // Conform to url date format
@@ -30,4 +22,31 @@ extension Date {
 
 		return stringDateFormat
 	}
+
+	// MARK: - Fetch articles dates (2022-12-25) format
+	
+	public var oneYearAgoApodFormat: String {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd"
+
+		// 365 days in seconds
+		let epochHundredDaysAgo: Double = 315_360_00
+		let todayInEpoch: Double = Date().timeIntervalSince1970
+
+		let todayMinusOneYear = (todayInEpoch - epochHundredDaysAgo)
+		let oneYearAgoDateEpochFormat: Date = Date(timeIntervalSince1970: todayMinusOneYear)
+		let threeHundredDayAgoStringFormat = dateFormatter.string(from: oneYearAgoDateEpochFormat)
+
+		return threeHundredDayAgoStringFormat
+	}
+
+	public var todayApodFormat: String {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd"
+
+		let todayDateFormatted = dateFormatter.string(from: Date())
+		return todayDateFormatted
+	}
+
+
 }
