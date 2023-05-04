@@ -9,29 +9,30 @@ import Foundation
 
 @available(macOS 12.0, *)
 public struct FetchArticlesApi {
-	public static func fetchAstronomiesObject(from hundredDayBefore: Int64 = Date().millisecondsSince1970 , to today: Date) async throws -> [Article] {
+	public static func fetchArticles() async throws -> [Article] {
 		let formatter = DateFormatter()
 		formatter.dateFormat = "yyyy-MM-dd"
 
-		//100 days ago converter
-		let epochHundredDaysAgo: Int64 = (10454400000)// 111 days in milliseconds
-		let todayMinusHundredDay = (hundredDayBefore - epochHundredDaysAgo)
-		let hundredDayAgoDateType = Date(milliseconds: todayMinusHundredDay)
-		let hundredDayAgo = formatter.string(from: hundredDayAgoDateType)
+		// 333 days in milliseconds
+		let epochHundredDaysAgo: Int64 = 313_632_000_00
+		let todayInMilliseconds = Date().millisecondsSince1970
 
-		// Today time converter
-		let  today = Date()
+		let todayMinusThreeUndred = (todayInMilliseconds - epochHundredDaysAgo)
+		let threeHundredDayAgoDateType = Date(milliseconds: todayMinusThreeUndred)
+		let threeHundredDayAgo = formatter.string(from: threeHundredDayAgoDateType)
 
-		let dateString = formatter.string(from: today)
+		// Today time formatter
+		let todayDateFormatted = formatter.string(from: Date())
 	
-		let url = "https://apod.ellanan.com/api?start_date=\(hundredDayAgo)&end_date=\(dateString)"
+		let url = "https://apod.ellanan.com/api?start_date=\(threeHundredDayAgo)&end_date=\(todayDateFormatted)"
 
 		guard let url = URL(string: url) else {
 			throw ApiError.urlNotFound
 		}
+
 		let (data, response) = try await URLSession.shared.data(from: url)
 
-		guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode >= 200 && httpResponse.statusCode < 300 else {
+		guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
 			throw ApiError.badHttpResponse
 		}
 
