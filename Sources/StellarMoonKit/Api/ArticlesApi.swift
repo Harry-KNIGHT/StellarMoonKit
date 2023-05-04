@@ -10,6 +10,9 @@ import Foundation
 @available(macOS 12.0, *)
 public struct FetchArticlesApi {
 	public static func fetchArticles() async throws -> [Article] {
+
+		// TODO: Refactorise this date part into external method or date extention.
+
 		let formatter = DateFormatter()
 		formatter.dateFormat = "yyyy-MM-dd"
 
