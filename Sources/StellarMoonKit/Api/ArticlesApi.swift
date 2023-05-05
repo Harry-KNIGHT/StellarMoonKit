@@ -7,8 +7,12 @@
 
 import Foundation
 
+public protocol FetchArticleClient {
+	static func fetchArticles() async throws -> [Article]
+}
+
 @available(macOS 12.0, *)
-public struct FetchArticlesApi {
+public struct FetchArticlesApi: FetchArticleClient {
 	public static func fetchArticles() async throws -> [Article] {
 		let url = "https://apod.ellanan.com/api?start_date=\(Date.now.oneYearAgoApodFormat)&end_date=\(Date.now.todayApodFormat)"
 
