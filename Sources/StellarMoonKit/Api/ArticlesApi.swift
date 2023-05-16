@@ -14,7 +14,7 @@ public protocol FetchArticleClient {
 @available(macOS 12.0, *)
 public struct FetchArticlesApi: FetchArticleClient {
 	public static func fetchArticles() async throws -> [Article] {
-		let url = "https://apod.ellanan.com/api?start_date=\(Date.now.oneYearAgoApodFormat)&end_date=\(Date.now.todayApodFormat)"
+		let url = "https://apod.ellanan.com/api?start_date=2022-02-28"
 
 		guard let url = URL(string: url) else {
 			throw ApiError.urlNotFound
