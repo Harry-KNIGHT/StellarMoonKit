@@ -23,30 +23,21 @@ extension Date {
 		return stringDateFormat
 	}
 
-	// MARK: - Fetch articles dates (2022-12-25) format
-	
-	public var oneYearAgoApodFormat: String {
+	// MARK: - Fetch articles from one date in days.
+
+	public func daysAgo(_ daysInterval: Double) -> String {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "yyyy-MM-dd"
+		let oneDayInSec: Double = 86400
 
-		// 365 days in seconds
-		let epochHundredDaysAgo: Double = 315_360_00
+		// Convert days in seconds for epoch format
+		let dayIntervalInSeconds: Double = (oneDayInSec * daysInterval)
 		let todayInEpoch: Double = Date().timeIntervalSince1970
 
-		let todayMinusOneYear = (todayInEpoch - epochHundredDaysAgo)
-		let oneYearAgoDateEpochFormat: Date = Date(timeIntervalSince1970: todayMinusOneYear)
-		let threeHundredDayAgoStringFormat = dateFormatter.string(from: oneYearAgoDateEpochFormat)
+		let daysIntervalInSecondsMinusTodayInEpoch = (dayIntervalInSeconds - todayInEpoch)
+		let daysIntervalAgoEpochFormat: Date = Date(timeIntervalSince1970: daysIntervalInSecondsMinusTodayInEpoch)
+		let convertEpochToStringformat = dateFormatter.string(from: daysIntervalAgoEpochFormat)
 
-		return threeHundredDayAgoStringFormat
+		return convertEpochToStringformat
 	}
-
-	public var todayApodFormat: String {
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd"
-
-		let todayDateFormatted = dateFormatter.string(from: Date())
-		return todayDateFormatted
-	}
-
-
 }
