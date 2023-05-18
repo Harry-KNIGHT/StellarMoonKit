@@ -34,7 +34,7 @@ extension Date {
 		let dayIntervalInSeconds: Double = (oneDayInSec * daysInterval)
 		let todayInEpoch: Double = Date().timeIntervalSince1970
 
-		let daysIntervalInSecondsMinusTodayInEpoch = (dayIntervalInSeconds - todayInEpoch)
+		let daysIntervalInSecondsMinusTodayInEpoch = (todayInEpoch - dayIntervalInSeconds)
 		let daysIntervalAgoEpochFormat: Date = Date(timeIntervalSince1970: daysIntervalInSecondsMinusTodayInEpoch)
 		let convertEpochToStringformat = dateFormatter.string(from: daysIntervalAgoEpochFormat)
 
