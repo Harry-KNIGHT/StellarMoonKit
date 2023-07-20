@@ -1,5 +1,5 @@
 //
-//  AllAstronomyArticlesApi.swift
+//  ArticlesService.swift
 //  NasaDayAstronomy
 //
 //  Created by Elliot Knight on 26/07/2022.
@@ -7,13 +7,12 @@
 
 import Foundation
 
-public protocol FetchArticleClient {
-	static func fetchArticles(_ daysInterval: Double) async throws -> [Article]
-}
-
 @available(macOS 12.0, *)
-public struct FetchArticlesApi: FetchArticleClient {
-	public static func fetchArticles(_ daysInterval: Double = 365) async throws -> [Article] {
+public struct FetchArticlesApi {
+	
+	public init() {}
+
+	public func fetchArticles(_ daysInterval: Double = 365) async throws -> [Article] {
 		let url = "https://apod.ellanan.com/api?start_date=\(Date.now.daysAgo(daysInterval))"
 
 		guard let url = URL(string: url) else {
@@ -29,7 +28,7 @@ public struct FetchArticlesApi: FetchArticleClient {
 		do {
 			return try JSONDecoder().decode([Article].self, from: data)
 		} catch {
-			throw ApiError.someThingWentWrong
+			throw ApiError.cantDecodeType
 		}
 	}
 }
